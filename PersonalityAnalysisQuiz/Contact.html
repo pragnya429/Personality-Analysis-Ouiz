@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - KnowYou</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styling for the header */
+        header {
+            background-color: #c39b7f; /* Header background color */
+            padding: 1.5rem 2rem; /* Padding for a taller header */
+            text-align: center; /* Center text */
+            position: relative; /* For absolute positioning of the light */
+            overflow: hidden; /* To prevent light from going outside the header */
+        }
+
+        /* Fixed light-falling effect from above */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -100%; /* Start above the header */
+            left: 0;
+            width: 100%;
+            height: 200%; /* Makes it large enough to cover the header */
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.35), transparent);
+            animation: light-fall 5s infinite ease-in-out;
+        }
+
+        /* Animation to create the light-falling effect */
+        @keyframes light-fall {
+            0% {
+                top: -100%;
+                opacity: 0;
+            }
+            50% {
+                top: 0%; /* Keep the light at the top of the header */
+                opacity: 1; /* Maximum opacity in the middle */
+            }
+            100% {
+                top: 100%; /* Move the light out of the header */
+                opacity: 0;
+            }
+        }
+
+        /* Logo styling */
+        .contact {
+            color: white; /* Color for "KnowYou" text */
+            font-size: 2.5rem; /* Larger font size for the logo */
+            font-weight: 700; /* Bold font */
+            letter-spacing: 1px; /* Slight spacing between letters for refinement */
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+            margin-bottom: 12px; /* Space between logo and tagline */
+        }
+
+        body {
+            background-color: #f4e1c1; /* Beige background */
+            color: #333; /* Dark text color */
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #8e6a4f; /* Darker brown shade for navbar */
+            padding: 0.5rem 0;
+            margin-bottom: 30px; /* No gap between header and navbar */
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: space-around;
+            width: 100%; /* Spread items evenly across the navbar */
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #f1f1f1 !important; /* Brighter white color */
+            text-decoration: none;
+            font-weight: 600; /* Slightly bolder text */
+            padding: 12px 20px !important; /* Adjust padding for uniformity */
+            display: block;
+            transition: background-color 0.3s ease, padding 0.3s ease !important; /* Ensure transition works */
+        }
+
+        /* Hover effect */
+        .nav-link:hover {
+            background-color: #6a4e29 !important; /* Lighter brown shade on hover */
+            padding: 12px 40px !important; /* Expands the hover area */
+        }
+
+        /* Background color for the form container */
+.contact-container {
+    background-color: #f4e1c1; /* Beige background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+/* Style the form inputs and textareas to have the same beige background */
+.form-control {
+    background-color: #f4e1c1; /* Beige background for form fields */
+    color: #333; /* Dark text for better readability */
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #8e6a4f; /* Match the border color to navbar */
+}
+
+/* Style for the select dropdown */
+.form-control[type="select"] {
+    background-color: #f4e1c1; /* Beige background */
+}
+
+/* Optional: Add a focus effect on the form fields to maintain usability */
+.form-control:focus {
+    background-color: #f4e1c1; /* Keep the same beige background when focused */
+    border-color: #6a4e29; /* Darker border color when focused */
+    outline: none; /* Remove default outline */
+}
+
+.contact-container .form-group label {
+    font-weight: bold;
+}
+
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-header h1 {
+            color: #c39b7f;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .btn-primary , .btn-reset {
+            background-color: #8e6a4f;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+			color: white;
+        }
+
+        .btn-primary:hover , .btn-reset:hover {
+            background-color: #6a4e29;
+        }
+
+        .social-links a {
+            margin: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .social-links a:hover {
+            color: #c39b7f;
+        }
+
+        .privacy-notice {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .confirmation-message {
+            display: none;
+            background-color: #8e6a4f;
+            padding: 15px;
+            margin-top: 20px;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+		/* Footer styles */
+        footer {
+            background-color: #8e6a4f; /* Dark brown background for footer */
+            color: white; /* White text color */
+            text-align: center; /* Center the text */
+            padding: 1rem 0; /* Add some padding */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer .disclaimer {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        footer .copyright {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="contact">
+        Contact Us
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="Quiz1.html">Take Quiz</a></li>
+            <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="Contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="contact-header">
+        <p>We’d love to hear from you! Whether you have a question about your Enneagram results, feedback on our quizzes, or just want to get in touch, we’re here to help.</p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-container">
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name (optional):</label>
+                <input type="text" class="form-control" id="name" placeholder="Your Name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email (required):</label>
+                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <select class="form-control" id="subject">
+                    <option>General Inquiry</option>
+                    <option>Technical Support</option>
+                    <option>Feedback</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-reset">Reset</button> <!-- Reset Button -->
+        </form>
+
+        <!-- Confirmation Message -->
+        <div id="confirmationMessage" class="confirmation-message">
+            Your message has been received! We'll get back to you as soon as possible.
+        </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="contact-info mt-4">
+        <h3>Contact Information</h3>
+        <p>If you prefer to reach out directly, you can contact us via:</p>
+        <ul>
+            <li>Email: <a href="mailto:contact@website.com">knowyou@gmail.com</a></li>
+            <li>Phone: 123456789</li>
+            <li>Address: Lovely Professional University</li>
+        </ul>
+    </div>
+
+ 
+    
+
+    <!-- Privacy Notice -->
+    <div class="privacy-notice">
+        <p>Your privacy is important to us. All messages sent through this form will be kept confidential and secure. Please review our <a href="#">Privacy Policy</a> for more information.</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting and refreshing the page
+        document.getElementById("confirmationMessage").style.display = "block"; // Show confirmation message
+    });
+
+    // When the form is submitted, show the confirmation message
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent form from actually submitting for now
+        document.getElementById('confirmationMessage').style.display = 'block'; // Show confirmation message
+
+        // Optionally, reset the form after showing the message
+        setTimeout(function() {
+            document.querySelector('form').reset(); // Reset form fields
+            document.getElementById('confirmationMessage').style.display = 'none'; // Hide confirmation message after reset
+        }, 3000); // Keep confirmation message visible for 3 seconds
+    });
+
+    // Hide confirmation message and reset form on clicking reset button
+    document.querySelector('[type="reset"]').addEventListener('click', function() {
+        document.getElementById('confirmationMessage').style.display = 'none'; // Hide confirmation message on reset
+    });
+	let isFormChanged = false;
+
+    // Function to mark form as changed when the user types in any input field
+    function markFormAsChanged() {
+        isFormChanged = true;
+    }
+
+    // Event listener to show warning before leaving the page
+    window.addEventListener("beforeunload", function(event) {
+        if (isFormChanged) {
+            const message = "You may lose your changes if you leave the website. Are you sure you want to leave?";
+            event.returnValue = message; // Standard for most browsers
+            return message; // For some browsers like Firefox
+        }
+    });
+
+    // Function to handle input field change
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('input', markFormAsChanged);
+
+    // Optional: Reset the warning flag when the form is successfully submitted
+    function submitForm(event) {
+        isFormChanged = false;
+        alert("Form submitted successfully!");
+        event.preventDefault(); // Prevent actual submission for demo purposes
+    }
+
+    // Optional: Reset the form and the flag if user decides to reset the form
+    function resetForm() {
+        isFormChanged = false;
+    }
+
+</script>
+<!-- Footer Section -->
+    <footer>
+        <div class="disclaimer">
+            Disclaimer: This website is for informational purposes only. The results from the Enneagram quiz are not definitive and should not be used for any official or psychological purposes.
+        </div>
+        <div class="copyright">
+            &copy; 2024 KnowYou. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
